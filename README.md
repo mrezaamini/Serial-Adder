@@ -5,4 +5,5 @@ Sequential serial adders are economically efficient and simple to build. In seri
 for testing set a and b as input numbers in testbench and simulate it with softwares like modelsim. 
 Test Example:
 <br></br>
-![modelsim test example](https://github.com/mrezaamini/Serial-Adder/blob/main/test.png){width=50%}
+![modelsim test example](https://github.com/mrezaamini/Serial-Adder/blob/main/test.png)
+
