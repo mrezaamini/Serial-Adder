@@ -1,37 +1,43 @@
-## Welcome to GitHub Pages
+# GENERIC SERIAL ADDER
+Sequential serial adders are economically efficient and simple to build. In serial adders, pairs of bits are added simultaneously during each clock cycle. This is a simple VHDL implementation of serial adder tested with serialAdder_tb as testbench.
+## IMPLEMENTATION
+Main entity of the serial adder consist of Start (for initializing the adder),Done(telling us that the adding process is complete), a and b(our input numbers), cout(final carry out), clk(main clock) and nrst(stands for not reset).
+```vhd
+entity serialAdder is generic (n : INTEGER := 8);
+    port(a,b : in std_logic_vector(n-1 downto 0);
+        clk,start,nrst : in std_logic;
+        cout,done : out std_logic;
+        sum :  out std_logic_vector(n-1 downto 0)
+        );
+end entity serialAdder;
+```
+Main process will always evaluate signals and the by each clock tick it will add count'th bit of a with count'th of b and put the result in count'th bit of sumSig then put the carry of this add into variable carry to save it for the next clock tick.
 
-You can use the [editor on GitHub](https://github.com/mrezaamini/Serial-Adder/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```vhd
+if nrst='0' then
+            count := 0;
+            carry<='0';
+            done<='0';
+	    cout<='0';
+            sumSig<= (others => '0');
+	    sum<= (others => '0');
+        elsif rising_edge(clk) then
+	    if  count=n  then
+                    done<='1';
+                    sum <= sumSig;
+		    cout<=carry;
+            end if;
+            if (start='1') and (count<n)  then
+                sumSig(count)<=a(count) xor b(count) xor carry;
+                carry<=(a(count) and b(count)) or (a(count) and carry) or (carry and b(count));
+                count:=count+1;
+       
+            end if;
+ 	    
+        end if;
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mrezaamini/Serial-Adder/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## TEST:
+for testing set a and b as input numbers in testbench and simulate it with softwares like modelsim. 
+Test Example:
+![modelsim test example](/test.png)
