@@ -6,7 +6,6 @@ Sequential serial adders are economically efficient and simple to build. In seri
 - [TEST](#test)
 - [Contributing](#contributing)
 - [Support + Feedback](#support--feedback)
-- [Vulnerability Reporting](#vulnerability-reporting)
 - [Thank You](#thank-you)
 - [License](#license)
 
@@ -28,10 +27,6 @@ We appreciate feedback and contribution to this repo! Before you get started, pl
 
 Include information on how to get support.
 - easily contact me with [email](aminiamini433@yahoo.fr)
-
-## Vulnerability Reporting
-
-Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
 ## Thank You
 
