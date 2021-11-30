@@ -26,7 +26,7 @@ We appreciate feedback and contribution to this repo! Before you get started, pl
 
 ## Support + Feedback
 
-Include information on how to get support. Consider adding:
+Include information on how to get support.
 - easily contact me with [email](aminiamini433@yahoo.fr)
 
 ## Vulnerability Reporting
@@ -35,7 +35,7 @@ Please do not report security vulnerabilities on the public GitHub issue tracker
 
 ## Thank You
 
-Information on the dependencies used, if desired.
+Thanks for paying attention, and hope this contest was usefull for you!
 
 ## License
 
